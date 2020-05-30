@@ -16,6 +16,12 @@ dependencies:
   flutter:
     sdk: flutter
 
+  fluro: 
+    git: 
+      url: https://github.com/huanggengzhong/fluro.git
+      ref: 0edf50d904981b891d9ee72fe4452c01f77e3b1e
+
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2

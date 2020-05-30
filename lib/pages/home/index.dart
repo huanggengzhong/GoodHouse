@@ -4,8 +4,8 @@ class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: PageContent(name:"HomePage页面传递name"),
+    return Container(//Container组件
+      child: PageContent(name:"Home页面"),
     );
   }
 }

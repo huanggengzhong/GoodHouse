@@ -5,7 +5,7 @@ class PageContent extends StatelessWidget {
   const PageContent({Key key, this.name}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(//Scaffold组件
       appBar: AppBar(
         title: Text('当前组件名:$name'),
       ),
