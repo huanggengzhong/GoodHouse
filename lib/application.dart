@@ -1,7 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/index.dart';
-import 'package:goodhouse/pages/login/login.dart';
+// import 'package:goodhouse/pages/login/login.dart';
 import 'package:goodhouse/routes.dart';
 
 class Application extends StatelessWidget {
@@ -17,8 +17,8 @@ class Application extends StatelessWidget {
       // theme:new ThemeData(
       //   primarySwatch:Colors.green,//这里设置主题颜色
       // ),
-      // home:HomePage(),
-      home:LoginPage(),
+      home:HomePage(),
+      // home:LoginPage(),
       onGenerateRoute: router.generator,
       
     );

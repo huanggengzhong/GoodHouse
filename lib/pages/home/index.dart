@@ -5,7 +5,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(//Container组件
-      child: PageContent(name:"Home页面"),
+      child: PageContent(name:"首页"),
     );
   }
 }

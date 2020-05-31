@@ -71,7 +71,7 @@ fluro: any
 #### 配置步骤
 步骤：
 
-1. 编写路由配置文件
+
    1. 创建 routes.dart 文件 并编写Routes类的基本结构
    2. 定义路由名称
    ```js
@@ -93,10 +93,20 @@ fluro: any
   router.define(login,handler:_loginHandler);
    ```
 
-2. 在 Application 中配置路由
-   1. 定义 router 
-   2. 通过调用configureRoutes 配置 router
-   3. 在 MaterialApp 中使用 router
-3. 测试路由
-   1. 在 PageContent  中添加跳转按钮
+   5. 在 Application 中引入和调用路由
+   ```js
+   import 'package:goodhouse/routes.dart';
+      Router router=Router();
+    Routes.configureRoutes(router);
+    ```
+   6. 测试路由
+   在page_content文件中添加按钮查看效果.
+   ```js
+    FlatButton(child:Text(Routes.home),onPressed:(){
+            Navigator.pushNamed(context,Routes.home);
+          }),
+          FlatButton(child:Text(Routes.login),onPressed:(){
+            Navigator.pushNamed(context,Routes.login);
+          }),
+    ```
 
