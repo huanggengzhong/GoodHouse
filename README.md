@@ -62,10 +62,12 @@ flutter run
 dependencies:
 // 下面有空格,安装好后再通过.lock文件吧版本号写回去
 fluro: any
+如果安装不了,可以参考另一种方法https://blog.csdn.net/xiaodi520520/article/details/99672182
 ```
 2. 添加 /pages/login.dart
 3. 参考 /pages/home/index.dart 完善登陆页。
 4. 在application里把入口文件改成loginPage
+
 
 
 #### 配置步骤
@@ -110,3 +112,4 @@ fluro: any
           }),
     ```
 
+### 优化路由(增加错误页面和参数传递)
