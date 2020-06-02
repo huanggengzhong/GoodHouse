@@ -22,6 +22,11 @@ class PageContent extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(context, Routes.login);
             }),
+        FlatButton(
+            child: Text("房屋详情页,id:2222"),
+            onPressed: () {
+              Navigator.pushNamed(context, "room/2222");
+            }),
         // FlatButton(
         //   child: Text('不存在的页面'),
         //   onPressed: () {

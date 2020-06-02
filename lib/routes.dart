@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/index.dart';
 import 'package:goodhouse/pages/login/login.dart';
 import 'package:goodhouse/pages/not_found.dart';
+import 'package:goodhouse/pages/room_detail/index.dart';
 
 class Routes {
   static String home="/";
   static String login="/login";
+  static String room="/room/:roomId";
 
   static Handler _homeHandler = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
   return HomePage();
@@ -18,15 +20,17 @@ class Routes {
   //   return NotFoundPage();
   // });//目前有问题,报The method 'inheritFromWidgetOfExactType' was called on null错误
   
-  static Handler _notFoundHandler =
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return NotFoundPage();
+   static Handler _roomDetailPage = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+     print(params);
+  return RoomDetailPage(roomId:params['roomId'][0]);
   });
+
 
 
   static  void configureRoutes(Router router) {
   router.define(home, handler: _homeHandler);
   router.define(login,handler:_loginHandler);
+  router.define(room,handler:_roomDetailPage);
   // router.notFoundHandler=_notFoundHandler;//目前有问题,报The method 'inheritFromWidgetOfExactType' was called on null错误
   }
 }

@@ -1,0 +1,15 @@
+import 'package:flutter/material.dart';
+class RoomDetailPage extends StatelessWidget {
+  final String roomId;
+  const RoomDetailPage({Key key,this.roomId}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print(roomId);
+    return Scaffold(
+      appBar:AppBar(
+        title:Text('roomId:$roomId')
+      )
+    );
+  }
+}
