@@ -23,7 +23,7 @@ class PageContent extends StatelessWidget {
               Navigator.pushNamed(context, Routes.login);
             }),
         FlatButton(
-            child: Text("房屋详情页,id:2222"),
+            child: Text("房屋详情页,携带参数id:2222"),
             onPressed: () {
               Navigator.pushNamed(context, "room/2222");
             }),

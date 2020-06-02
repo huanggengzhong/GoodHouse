@@ -112,4 +112,12 @@ fluro: any
           }),
     ```
 
-### 优化路由(增加错误页面和参数传递)
+### 优化路由(参数传递)
+
+带参数页面处理
+
+1. 在 /pages 目录添加 room_detail/index.dart 文件
+2. 实现 RoomDetailPage
+3. 在 /routes.dart 添加 _roomDetailPage
+4. 在 /routes.dart 的 configureRoutes 中添加 RoomDetailPage;
+5. 修改 PageContent 测试

@@ -5,7 +5,6 @@ class RoomDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(roomId);
     return Scaffold(
       appBar:AppBar(
         title:Text('roomId:$roomId')
