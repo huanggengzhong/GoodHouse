@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:goodhouse/pages/home/tab_index/index.dart';
 import 'package:goodhouse/widgets/page_content.dart';
 
 // 1. 需要准备 4 个 tab 内容区（tabView）
 List<Widget> tabViewList = [
-  PageContent(name: '首页'),
+  TabIndex(),
+  // PageContent(name: '首页'),
   PageContent(name: '搜索'),
   PageContent(name: '咨询'),
   PageContent(name: '我的'),

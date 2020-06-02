@@ -263,3 +263,43 @@ class _HomePageState extends State<HomePage> {
   }
 }
 ```
+### 首页第一屏页面
+#### 底部tab实现
+步骤：
+
+1. 新建文件 /pages/home/tab_index/index.dart
+2. 添加依赖，编写无状态组件
+3. 简化实现顶部区域--appBar
+4. body 部分包含多个组件且可以滚动—使用 ListView
+5. 在home/index.dart中使用TabIndex组件
+```js
+List<Widget> tabViewList = [
+  TabIndex(),
+  // PageContent(name: '首页'),
+  PageContent(name: '搜索'),
+  PageContent(name: '咨询'),
+  PageContent(name: '我的'),
+];
+```
+#### 轮播图的实现
+步骤：
+
+1. 准备组件框架代码
+   1. 新建文件 /widgets/common_swipper.dart
+   2. 添加依赖 material 和 flutter_swiper
+   3. 准备图片数据
+   4. 编写无状态组件
+   5. 添加 images 参数 并在构造函数中赋值
+2. 编写 swiper 核心代码
+   1. 参照官网使用 swipper
+   2. 修改 itemBuilder 和 itemCount
+   3. Swiper 父组件指定高度
+   ```js
+   //父组件获取屏幕高度的固定方法
+    var width= MediaQuery.of(context).size.width;
+   
+      
+3. 测试
+   1. 在 tabIndex 中使用 CommonSwiper
+
+
