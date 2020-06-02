@@ -2,7 +2,7 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/index.dart';
 import 'package:goodhouse/pages/login/login.dart';
-import 'package:goodhouse/pages/not_found.dart';
+// import 'package:goodhouse/pages/not_found.dart';
 import 'package:goodhouse/pages/room_detail/index.dart';
 
 class Routes {

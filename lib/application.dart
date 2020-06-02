@@ -14,9 +14,9 @@ class Application extends StatelessWidget {
     Routes.configureRoutes(router);
     return MaterialApp(
       // title: 'goodhouse',//这是标题,目前没什么用
-      // theme:new ThemeData(
-      //   primarySwatch:Colors.green,//这里设置主题颜色
-      // ),
+      theme:new ThemeData(
+        primarySwatch:Colors.green,//这里设置主题颜色
+      ),
       home:HomePage(),
       // home:LoginPage(),
       onGenerateRoute: router.generator,

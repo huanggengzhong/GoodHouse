@@ -23,6 +23,12 @@ class LoginPage extends StatelessWidget {
               hintText:"请输入密码"
             ),
           ),
+          RaisedButton(
+            child: Text("登录"),
+            onPressed: (){
+              print("登录");
+            },
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
