@@ -65,7 +65,7 @@ class LoginPageState extends State<LoginPage> {
                 FlatButton(
                     child: Text("去注册",style: TextStyle(color:Colors.green),),
                     onPressed: () {
-                      Navigator.pushNamed(context, 'register');
+                      Navigator.pushReplacementNamed(context, 'rigister');
                     })
               ],
             )

@@ -174,7 +174,32 @@ bool showPassword=false;
 #### 细节优化
 边距/异形屏幕问题？
 使用 SafeArea(解决超出问题)
+```js
+minimum: EdgeInsets.all(30.0)//解决padding问题
+```
 垂直高度不足问题？
 使用 ListView(不够可以滚动) 替代 Column
 
+### 添加注册页面
+步骤：
+
+1. 添加文件 /pages/register.dart
+2. 将login.dart 文件拷贝到 register.dart
+3. 修改类名称
+4. 修改 title
+5. 在路由中添加 register
+   1. 添加 route name
+   2. 添加 route handler
+   3. 在 configureRoutes 中关联 name 和router
+6. 修改了组件类型，需要重启app后测试
+##### 注册页面优化
+步骤：
+
+1. 删除密码显示逻辑
+2. 添加确认密码
+3. 修改按钮及下方链接到文案
+4. 优化登陆注册跳转，使用 Navigator.pushReplacementNamed
+```js
+Navigator.pushReplacementNamed(context, 'login');//可以删除记录
+```
 
