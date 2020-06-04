@@ -404,7 +404,7 @@ class IndexNavigator extends StatelessWidget {
    final localworkUrlRef=RegExp('^static');//本地图片
    ```
 
-```
+````
 2. 编写框架代码
    1. 编写无状态组件
    2. 完善组件参数 src width height fit
@@ -431,7 +431,7 @@ final localworkUrlRef=RegExp('^static');//本地图片
   const CommonImage({this.src,Key key,  this.width, this.height, this.fit}) : super(key: key);//把this.src放在最前面
 
 
- 
+
    @override
    Widget build(BuildContext context) {
     if(networkUrlRef.hasMatch(src)){//正则判断是否网络图片
@@ -462,6 +462,98 @@ final localworkUrlRef=RegExp('^static');//本地图片
    }
  }
 
-```
+````
+
 4. 使用 CommonImage
+
+```js
+CommonImage((src: item.imageUrl), (width: 47.5));
+```
+
+### 首页-tabIndex-推荐-准备
+
+1.数据准备
+
+```js
+class IndexRecommendItem{
+   final String title;
+   final String subTitle;
+   final String imageUrl;
+   final String navigateUrl;
+   const IndexRecommendItem(this.title,this.subTitle,this.imageUrl,this.navigateUrl);
+}
+
+const List<IndexRecommendItem> indexRecommendData=[
+  const IndexRecommendItem(
+    '家住回龙观','归属的感觉', 'static/images/home_index_recommend_1.png', 'login'),
+
+  const IndexRecommendItem(
+    '宜居四五环', '大都市生活','static/images/home_index_recommend_2.png', 'login'),
+
+  const IndexRecommendItem(
+    '喧嚣三里屯', '繁华的背后','static/images/home_index_recommend_3.png', 'login'),
+  const IndexRecommendItem(
+     '比邻十号线','地铁心连心', 'static/images/home_index_recommend_4.png', 'login'),
+];
+
+```
+
+步骤：
+
+1. 准备
+
+   1. 使用上一节准备好的数据
+   2. 新建文件 pages/home/tab_index/index_recommond.dart
+
+2. 编写核心代码
+   1. 添加依赖，无状态组件，dataList 参数，indexRecommendData 改成常量
+   2. 添加背景色及边距
+   3. 添加 wrap
+3. 测试
+
+```js
+import 'package:flutter/material.dart';
+import 'package:goodhouse/pages/home/tab_index/index_recommond_data.dart';
+class IndexRecommond extends StatelessWidget {
+  final List<IndexRecommendItem> dataList;
+
+  const IndexRecommond({Key key,this.dataList=indexRecommendData}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(10.0),
+      decoration: BoxDecoration(color: Color(0x08000000)),
+      child: Column(
+        children:<Widget>[
+          Row(
+            mainAxisAlignment:MainAxisAlignment.spaceBetween,
+            children:<Widget>[
+              Text('房屋推荐',style:TextStyle(
+                color:Colors.black,
+                fontWeight:FontWeight.w600,
+
+              )),
+              Text('更多',style:TextStyle(
+                color:Colors.black54
+              ))
+            ]
+          ),
+          Padding(padding: EdgeInsets.all(5),),
+          Wrap(
+            spacing: 10.0,
+            runSpacing: 10.0,
+            children:dataList.map((e) => Container(
+                width: (MediaQuery.of(context).size.width -30.0)/2,
+                height: 100.0,
+                decoration: BoxDecoration(color:Colors.red),
+              )).toList()
+          ),
+        ]
+      ),
+    );
+  }
+}
+
+
 ```

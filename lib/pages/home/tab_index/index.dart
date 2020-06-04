@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/tab_index/index_navigator.dart';
+import 'package:goodhouse/pages/home/tab_index/index_recommend.dart';
 import 'package:goodhouse/widgets/common_swipper.dart';
 
 class TabIndex extends StatelessWidget {
@@ -15,6 +16,7 @@ class TabIndex extends StatelessWidget {
         children:<Widget>[
           CommonSwipper(),
           IndexNavigator(),
+          IndexRecommond(),
           Text("内容")
         ]
       )
