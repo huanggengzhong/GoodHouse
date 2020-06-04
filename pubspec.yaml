@@ -55,6 +55,11 @@ flutter:
     - static/images/home_index_navigator_map.png
     - static/images/home_index_navigator_share.png
     - static/images/home_index_navigator_rent.png
+    - static/images/home_index_recommend_1.png
+    - static/images/home_index_recommend_2.png
+    - static/images/home_index_recommend_3.png
+    - static/images/home_index_recommend_4.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
