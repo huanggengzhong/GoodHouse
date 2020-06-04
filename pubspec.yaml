@@ -47,7 +47,12 @@ flutter:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
-
+  assets:
+    # 首页——第一个tab-导航图标
+    - static/images/home_index_navigator_total.png
+    - static/images/home_index_navigator_map.png
+    - static/images/home_index_navigator_share.png
+    - static/images/home_index_navigator_rent.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
@@ -71,5 +76,7 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
