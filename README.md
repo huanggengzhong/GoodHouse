@@ -172,46 +172,58 @@ bool showPassword=false;
 6. 测试
 
 #### 细节优化
+
 边距/异形屏幕问题？
 使用 SafeArea(解决超出问题)
+
 ```js
-minimum: EdgeInsets.all(30.0)//解决padding问题
+minimum: EdgeInsets.all(30.0); //解决padding问题
 ```
+
 垂直高度不足问题？
 使用 ListView(不够可以滚动) 替代 Column
 
 ### 添加注册页面
+
 步骤：
 
 1. 添加文件 /pages/register.dart
-2. 将login.dart 文件拷贝到 register.dart
+2. 将 login.dart 文件拷贝到 register.dart
 3. 修改类名称
 4. 修改 title
 5. 在路由中添加 register
    1. 添加 route name
    2. 添加 route handler
-   3. 在 configureRoutes 中关联 name 和router
-6. 修改了组件类型，需要重启app后测试
+   3. 在 configureRoutes 中关联 name 和 router
+6. 修改了组件类型，需要重启 app 后测试
+
 ##### 注册页面优化
+
 步骤：
 
 1. 删除密码显示逻辑
 2. 添加确认密码
 3. 修改按钮及下方链接到文案
 4. 优化登陆注册跳转，使用 Navigator.pushReplacementNamed
+
 ```js
-Navigator.pushReplacementNamed(context, 'login');//可以删除记录
+Navigator.pushReplacementNamed(context, "login"); //可以删除记录
 ```
+
 ### 首页开始
+
 参考官方代码:
 (注意我的环境有两处要改)
+
 ```js
 // fontSize: 30
    fontSize: 30.0
 // selectedItemColor: Colors.amber[800],
    fixedColor:Colors.blue,
 ```
+
 修改后的代码如下:
+
 ```js
 import 'package:flutter/material.dart';
 import 'package:goodhouse/widgets/page_content.dart';
@@ -263,25 +275,31 @@ class _HomePageState extends State<HomePage> {
   }
 }
 ```
+
 ### 首页第一屏页面
-#### 底部tab实现
+
+#### 底部 tab 实现
+
 步骤：
 
 1. 新建文件 /pages/home/tab_index/index.dart
 2. 添加依赖，编写无状态组件
 3. 简化实现顶部区域--appBar
 4. body 部分包含多个组件且可以滚动—使用 ListView
-5. 在home/index.dart中使用TabIndex组件
+5. 在 home/index.dart 中使用 TabIndex 组件
+
 ```js
-List<Widget> tabViewList = [
+List < Widget > tabViewList = [
   TabIndex(),
   // PageContent(name: '首页'),
-  PageContent(name: '搜索'),
-  PageContent(name: '咨询'),
-  PageContent(name: '我的'),
+  PageContent((name: "搜索")),
+  PageContent((name: "咨询")),
+  PageContent((name: "我的"))
 ];
 ```
+
 #### 轮播图的实现
+
 步骤：
 
 1. 准备组件框架代码
@@ -296,14 +314,15 @@ List<Widget> tabViewList = [
    3. Swiper 父组件指定高度
    ```js
    //父组件获取屏幕高度的固定方法
-    var width= MediaQuery.of(context).size.width;
-   
-      
+   var width = MediaQuery.of(context).size.width;
+   ```
 3. 测试
    1. 在 tabIndex 中使用 CommonSwiper
 
 #### 首页导航
+
 1.数据准备
+
 ```js
 import 'package:flutter/material.dart';
 
@@ -330,9 +349,11 @@ List<IndexNavigatorItem> indexNavigatorItemList=[
   }),
 ];
 ```
+
 2. 添加依赖 material 和 index_navigator_item
 3. 编写无状态组件
 4. 完成页面结构
+
 ```js
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/tab_index/index_navigator_item.dart';
@@ -358,7 +379,7 @@ class IndexNavigator extends StatelessWidget {
                 fontSize: 14.0,
                 fontWeight: FontWeight.w500
               ))
-              
+
             ]
           ),
         )).toList()//转化成List
@@ -369,3 +390,78 @@ class IndexNavigator extends StatelessWidget {
 
 ```
 
+### 使用图片缓存进行封装
+
+步骤：
+
+1. 准备
+   1. 安装 flutter_advanced_networkimage: ^0.5.0 依赖
+   2. 添加文件 /widgets/common_image.dart
+   3. 引入两个依赖
+   4. 编写 正则 根据图片地址判断是网络图片还是本地图片
+   ```js
+   final networkUrlRef=RegExp('^http');//网络图片
+   final localworkUrlRef=RegExp('^static');//本地图片
+   ```
+
+```
+2. 编写框架代码
+   1. 编写无状态组件
+   2. 完善组件参数 src width height fit
+3. 完成核心逻辑
+   1. 如果是网络图片，使用 flutter_advanced_networkimage
+   2. 如果是本地图片，使用 Image.asset
+   3. 返回 Container
+  ```js
+  import 'dart:html';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_advanced_networkimage/provider.dart';
+
+final networkUrlRef=RegExp('^http');//网络图片
+final localworkUrlRef=RegExp('^static');//本地图片
+
+ class CommonImage extends StatelessWidget {
+
+   final String src;
+   final double width;
+   final double height;
+   final BoxFit fit;//图片的适应模式类型
+
+  const CommonImage({this.src,Key key,  this.width, this.height, this.fit}) : super(key: key);//把this.src放在最前面
+
+
+ 
+   @override
+   Widget build(BuildContext context) {
+    if(networkUrlRef.hasMatch(src)){//正则判断是否网络图片
+      return Image(
+        width: width,
+        height: height,
+        fit: fit,
+        image: AdvancedNetworkImage(
+          src,
+          useDiskCache: true,//磁盘缓存
+          cacheRule: CacheRule(maxAge:Duration(days:7)),//保存时间
+          timeoutDuration: Duration(seconds: 20)//超时时间
+        ),
+       );
+    }
+    if(localworkUrlRef.hasMatch(src)){
+      return Image.asset(
+        src,
+        width: width,
+        height: height,
+        fit: fit,
+      );
+    }
+    assert(false,"图片地址不合法");//抛出异常
+    return Container();
+
+
+   }
+ }
+
+```
+4. 使用 CommonImage
+```

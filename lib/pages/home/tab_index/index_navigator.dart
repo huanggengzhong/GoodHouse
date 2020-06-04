@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/tab_index/index_navigator_item.dart';
+import 'package:goodhouse/widgets/common_image.dart';
 class IndexNavigator extends StatelessWidget {
   const IndexNavigator({Key key}) : super(key: key);
 
@@ -16,7 +17,8 @@ class IndexNavigator extends StatelessWidget {
           },
           child: Column(
             children:<Widget>[
-              Image.asset(item.imageUrl,
+              // Image.asset(item.imageUrl,
+              CommonImage(src:item.imageUrl,
               width:47.5,),
               Text(item.title,style:TextStyle(
                 fontSize: 14.0,
