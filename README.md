@@ -303,7 +303,7 @@ List<Widget> tabViewList = [
    1. 在 tabIndex 中使用 CommonSwiper
 
 #### 首页导航
-数据准备
+1.数据准备
 ```js
 import 'package:flutter/material.dart';
 
@@ -329,5 +329,43 @@ List<IndexNavigatorItem> indexNavigatorItemList=[
     Navigator.of(context).pushNamed('login');
   }),
 ];
+```
+2. 添加依赖 material 和 index_navigator_item
+3. 编写无状态组件
+4. 完成页面结构
+```js
+import 'package:flutter/material.dart';
+import 'package:goodhouse/pages/home/tab_index/index_navigator_item.dart';
+class IndexNavigator extends StatelessWidget {
+  const IndexNavigator({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding:EdgeInsets.only(top:6.0,bottom:6.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: indexNavigatorItemList
+        .map((item)=>InkWell(//InkWell可以实现水波纹效果
+          onTap: (){
+            item.onTap(context);
+          },
+          child: Column(
+            children:<Widget>[
+              Image.asset(item.imageUrl,
+              width:47.5,),
+              Text(item.title,style:TextStyle(
+                fontSize: 14.0,
+                fontWeight: FontWeight.w500
+              ))
+              
+            ]
+          ),
+        )).toList()//转化成List
+      ),
+    );
+  }
+}
+
 ```
 
