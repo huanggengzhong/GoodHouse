@@ -105,11 +105,12 @@ router.define(login,handler:_loginHandler);
 
 5.  在 Application 中引入和调用路由
 
-````js
+```js
 import 'package:goodhouse/routes.dart';
    Router router=Router();
  Routes.configureRoutes(router);
- ```
+ 
+```
 6. 测试路由
 在page_content文件中添加按钮查看效果.
 ```js
@@ -119,7 +120,8 @@ import 'package:goodhouse/routes.dart';
        FlatButton(child:Text(Routes.login),onPressed:(){
          Navigator.pushNamed(context,Routes.login);
        }),
- ```
+  
+```
 
 ### 优化路由(参数传递)
 
@@ -146,24 +148,24 @@ import 'package:goodhouse/routes.dart';
 2. 添加可点击的图标— IconButton
 ```js
 TextField(
-         decoration: InputDecoration(
-           labelText:"密码",
-           hintText:"请输入密码",
-           suffixIcon:IconButton(icon:Icon(
-             showPassword?Icons.visibility_off:Icons.visibility
-           ),
-            onPressed: (){
-              setState(() {
-                showPassword=!showPassword;
-              });
-            }) //使用文本框 TextField 自带的属性【后缀图标 suffixIcon】
-         ),
-       ),
-````
+  ​       decoration: InputDecoration(
+  ​         labelText:"密码",
+  ​         hintText:"请输入密码",
+  ​         suffixIcon:IconButton(icon:Icon(
+  ​           showPassword?Icons.visibility_off:Icons.visibility
+  ​         ),
+  ​          onPressed: (){
+  ​            setState(() {
+  ​              showPassword=!showPassword;
+  ​            });
+  ​          }) //使用文本框 TextField 自带的属性【后缀图标 suffixIcon】
+  ​       ),
+  ​     ),
+​````
 
 3. 添加状态— showPassword
 
-```js
+​```js
 bool showPassword=false;
 ```
 
@@ -178,6 +180,7 @@ bool showPassword=false;
 
 ```js
 minimum: EdgeInsets.all(30.0); //解决padding问题
+ 
 ```
 
 垂直高度不足问题？
@@ -317,6 +320,7 @@ List < Widget > tabViewList = [
    var width = MediaQuery.of(context).size.width;
    ```
 3. 测试
+
    1. 在 tabIndex 中使用 CommonSwiper
 
 #### 首页导航
@@ -600,3 +604,120 @@ class IndexRecommendItemWidget extends StatelessWidget {
 }
 
 ```
+
+### 资讯部分
+数据准备home/info/data.dart
+```js
+// 资讯数据准备,注意下面的格式
+
+class InfoItem {
+  final String title;
+  final String imageUrl;
+  final String source;
+  final String time;
+  final String navigateUrl;
+  const InfoItem(
+      {this.title, this.imageUrl, this.source, this.time, this.navigateUrl});
+}
+
+const List<InfoItem> infoData = [
+  const InfoItem(
+      title: '置业选择 | 安贞西里 三室一厅 河间的古雅别院',
+      imageUrl:
+          'https://wx2.sinaimg.cn/mw1024/005SQLxwly1g6f89l4obbj305v04fjsw.jpg',
+      source: "新华网",
+      time: "两天前",
+      navigateUrl: 'login'),
+];
+
+```
+
+内容编码info/index.dart
+
+```js
+import 'package:flutter/material.dart';
+import 'package:goodhouse/pages/home/info/data.dart';
+import 'package:goodhouse/pages/home/info/item_widget.dart';
+
+class Info extends StatelessWidget {
+  final bool showTitle;//考虑到资讯和首页有些显示,所以采用复用
+  final List<InfoItem> dataList;
+
+  const Info({Key key,this.showTitle=false, this.dataList=infoData}) : super(key: key);//infoData是data.dart文件内容
+ 
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children:<Widget>[
+          if(showTitle)Container(
+            alignment:Alignment.centerLeft,
+            padding:EdgeInsets.all(10.0),
+            child:Text('最新资讯',style:TextStyle(color:Colors.black,fontWeight:FontWeight.w600))
+          ),
+          Column(
+            children:dataList.map((myitem) =>
+            
+            //  Container(
+            //   height:100.0,
+            //   margin:EdgeInsets.only(bottom:10.0),
+            //   decoration:BoxDecoration(color:Colors.red),
+            // )
+            ItemWidget(myitem)
+            ).toList(),
+          )
+        ]
+      ),
+    );
+  }
+}
+
+```
+子选项内容info/item_widget.dat
+```js
+import 'package:flutter/material.dart';
+import 'package:goodhouse/pages/home/info/data.dart';
+import 'package:goodhouse/widgets/common_image.dart';
+
+class ItemWidget extends StatelessWidget {
+  final InfoItem data;
+  const ItemWidget(this.data,{Key key}) : super(key: key);//记住this.data一定要在前面,并且和后面对象独立
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100.0,
+      padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+      child: Row(
+        children: <Widget>[
+          CommonImage(
+            src: data.imageUrl,
+            width: 120.0,
+            height: 90.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 10.0),
+          ),
+          Expanded(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                Text(data.title,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600, color: Colors.black)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(data.source, style: TextStyle(color: Colors.black54)),
+                    Text(data.time, style: TextStyle(color: Colors.black54))
+                  ],
+                )
+              ])) //Expanded自动填充组件
+        ],
+      ),
+    );
+  }
+}
+```
+
