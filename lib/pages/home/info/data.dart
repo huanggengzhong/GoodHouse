@@ -33,7 +33,7 @@ const List<InfoItem> infoData = [
       time: "一周前",
       navigateUrl: 'login'),
   const InfoItem(
-      title: '置业选择 | 安居小屋 花园洋房 清新别野',
+      title: '置业选择 | 安居小屋 花园洋房 清新别野 山清水秀',
       imageUrl:
           'https://wx4.sinaimg.cn/mw1024/005SQLxwly1g6f89l5jlyj305v04f75q.jpg',
       source: "新华网",

@@ -721,3 +721,6 @@ class ItemWidget extends StatelessWidget {
 }
 ```
 
+### 首页资讯tab_info页面
+创建tab_info/index.dart文件,复用info文件内容渲染即可
+在home/index.dart中将第三个资讯tabViewList改为TabInfo().

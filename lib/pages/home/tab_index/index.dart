@@ -19,7 +19,6 @@ class TabIndex extends StatelessWidget {
           IndexNavigator(),
           IndexRecommond(),
           Info(showTitle:true),
-          Text("内容")
         ]
       )
     );
