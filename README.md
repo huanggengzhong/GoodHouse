@@ -732,7 +732,7 @@ class ItemWidget extends StatelessWidget {
 1. 创建文件 /pages/home/tab_search/dataList.dart 使用上一节准备的数据
 2. 创建文件 /pages/home/tab_search/index.dart
 3. 引入依赖，创建有状态组件
-4. 编写主体结构
+4. 编写主体结构(使用列表组件和搜索组件分离)
 ```js
 import 'package:flutter/material.dart';
 

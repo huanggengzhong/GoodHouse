@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/tab_search/dataList.dart';
+import 'package:goodhouse/widgets/room_list_item_widget.dart';
 
 class TabSearch extends StatefulWidget {
   TabSearch({Key key}) : super(key: key);
@@ -19,17 +20,18 @@ class _TabSearchState extends State<TabSearch> {
         children:<Widget>[
           Container(
             height:40.0,
-            child:Text('filterBar'),
+            child:Text('搜索页盒子占位'),
            
           ),
            Expanded(//表单输入组件
             child: ListView(
               children:dataList.map((item)=>
-             Container(
-               height:200.0,
-               margin:EdgeInsets.only(bottom:10.0),
-               decoration: BoxDecoration(color:Colors.green),
-             )   
+            //  Container(
+            //    height:200.0,
+            //    margin:EdgeInsets.only(bottom:10.0),
+            //    decoration: BoxDecoration(color:Colors.green),
+            //  )  
+            RoomListItemWidget(item), 
         ).toList()
             ),
            )
