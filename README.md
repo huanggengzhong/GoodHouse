@@ -726,9 +726,44 @@ class ItemWidget extends StatelessWidget {
 在home/index.dart中将第三个资讯tabViewList改为TabInfo().
 
 ### 首页搜索页面
+数据准备:tab_search/dataList.dart
 **步骤：**
 
 1. 创建文件 /pages/home/tab_search/dataList.dart 使用上一节准备的数据
 2. 创建文件 /pages/home/tab_search/index.dart
 3. 引入依赖，创建有状态组件
 4. 编写主体结构
+```js
+import 'package:flutter/material.dart';
+
+import 'dataList.dart';
+
+class TabSearch extends StatefulWidget {
+  const TabSearch({Key key}) : super(key: key);
+
+  @override
+  _TabSearchState createState() => _TabSearchState();
+}
+
+class _TabSearchState extends State<TabSearch> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('tabSearch'),),
+      body: Column(children: <Widget>[
+        Container(
+          height: 40.0,
+          child: Text('filterBar'),),
+          Expanded(child: ListView(
+            children: dataList.map((item)=>Container(
+              height: 200.0,
+              margin: EdgeInsets.only(bottom: 10.0),
+              decoration: BoxDecoration(color: Colors.grey),
+            )).toList(),
+          ),)
+      ],),
+      
+    );
+  }
+}
+```
