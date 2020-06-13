@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/tab_search/dataList.dart';
 import 'package:goodhouse/widgets/common_image.dart';
+import 'package:goodhouse/widgets/common_tag.dart';
  class RoomListItemWidget extends StatelessWidget {
    final RoomListItemData data;
    const RoomListItemWidget(this.data,{Key key}) : super(key: key);
@@ -21,7 +22,8 @@ import 'package:goodhouse/widgets/common_image.dart';
                  fontWeight:FontWeight.w600
                )),
                Text(data.subTitle,maxLines:1,overflow:TextOverflow.ellipsis),
-               Wrap(children:data.tags.map((item)=>Text(item+';')).toList()),//标签组件
+               Wrap(children:data.tags.map((item)=>CommonTag(item)).toList()),//标签组件
+              //  Wrap(children:data.tags.map((item)=>Text(item+';')).toList()),//标签组件
                Text(data.subTitle,maxLines:1,overflow:TextOverflow.ellipsis,style: TextStyle(
                  color:Colors.orange
                ),),

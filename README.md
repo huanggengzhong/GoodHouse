@@ -408,7 +408,7 @@ class IndexNavigator extends StatelessWidget {
    final localworkUrlRef=RegExp('^static');//本地图片
    ```
 
-````
+
 2. 编写框架代码
    1. 编写无状态组件
    2. 完善组件参数 src width height fit
@@ -416,9 +416,9 @@ class IndexNavigator extends StatelessWidget {
    1. 如果是网络图片，使用 flutter_advanced_networkimage
    2. 如果是本地图片，使用 Image.asset
    3. 返回 Container
+   
   ```js
   import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_networkimage/provider.dart';
 
@@ -763,6 +763,71 @@ class _TabSearchState extends State<TabSearch> {
           ),)
       ],),
       
+    );
+  }
+}
+```
+然后封装item和tags:
+common_tag.dart(中间用工厂构造函数)/room_list_item_widget.dart
+工厂函数用法：
+```js
+import 'package:flutter/material.dart';
+class CommonTag extends StatelessWidget {
+  final String title;//这是外部传递过来的
+  final Color color;//自己的
+  final Color backgroundColor;
+  const CommonTag.origin(this.title,{Key key,this.color=Colors.black,this.backgroundColor}) : super(key: key);//注意外部和自己的写法
+
+  // 工厂函数
+  factory CommonTag(String title){
+    switch (title) {
+      case '近地铁':
+      return CommonTag.origin(
+        title,//title子不变，其它值都改变
+        color:Colors.red,
+        backgroundColor: Colors.red[50],
+      );
+      case '集中供暖':
+      return CommonTag.origin(
+        title,//title子不变，其它值都改变
+        color:Colors.blue,
+        backgroundColor: Colors.blue[50],
+      );
+      case '新上':
+      return CommonTag.origin(
+        title,//title子不变，其它值都改变
+        color:Colors.green,
+        backgroundColor: Colors.green[50],
+      );
+      case '随时看房':
+      return CommonTag.origin(
+        title,//title子不变，其它值都改变
+        color:Colors.orange,
+        backgroundColor: Colors.orange[50],
+      );
+        
+      default:
+      return CommonTag.origin(title);
+    }
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(right:4.0),
+      padding: EdgeInsets.only(left:4.0,right:4.0,top:4.0,bottom:2.0),
+      decoration: BoxDecoration(
+        color:backgroundColor,//工厂里自定义的背景
+        borderRadius: BorderRadius.circular(8.0)
+      ),
+      child: Text(
+        title,//工厂里自定义的文字
+        style: TextStyle(
+          fontSize:10.0,
+          color:color//工厂里自定义的字体颜色
+        ),
+      ),
     );
   }
 }
