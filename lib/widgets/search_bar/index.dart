@@ -60,8 +60,31 @@ class _SearchBarState extends State<SearchBar> {
           Expanded(
               //自适应组件
               child: Container(
-            padding: EdgeInsets.only(right: 10.0),
-            child: TextField(decoration: InputDecoration(hintText: '请输入搜索词')),
+            height: 34.0,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(17.0),
+                color: Colors.grey[200]),
+            margin: EdgeInsets.only(right: 10.0),
+            child: TextField(
+              decoration: InputDecoration(
+                  hintText: '请输入搜索词',
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.only(top: -2.0, left: -10.0),
+                  suffixIcon: Icon(
+                    //后置图标
+                    Icons.clear,
+                    size: 18.0,
+                    color: Colors.grey,
+                  ),
+                  icon: Padding(
+                    padding: EdgeInsets.only(top: 4.0, left: 8.0),
+                    child: Icon(
+                      Icons.search,
+                      size: 18.0,
+                      color: Colors.grey,
+                    ),
+                  )),
+            ),
           )),
           if (widget.onCancel != null || true)
             Padding(
@@ -69,11 +92,11 @@ class _SearchBarState extends State<SearchBar> {
                 child: GestureDetector(
                     onTap: () {},
                     child: Row(children: <Widget>[
-                     Text('取消',
-                        style: TextStyle(color: Colors.black, fontSize: 14.0))
+                      Text('取消',
+                          style: TextStyle(color: Colors.black, fontSize: 14.0))
                     ]))),
-          if(widget.showMap!=null || true)
-          CommonImage(src:'static/icons/widget_search_bar_map.png')
+          if (widget.showMap != null || true)
+            CommonImage(src: 'static/icons/widget_search_bar_map.png')
         ],
       ),
     );
