@@ -832,3 +832,11 @@ class CommonTag extends StatelessWidget {
   }
 }
 ```
+### 搜索组件封装开发
+步骤：
+
+1. 创建文件 /widgets/search_bar/index.dart
+2. 引入 material 依赖， 创建有状态组件，添加参数
+3. 编写界面代码
+4. 测试
+
