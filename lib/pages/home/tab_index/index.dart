@@ -3,6 +3,7 @@ import 'package:goodhouse/pages/home/info/index.dart';
 import 'package:goodhouse/pages/home/tab_index/index_navigator.dart';
 import 'package:goodhouse/pages/home/tab_index/index_recommend.dart';
 import 'package:goodhouse/widgets/common_swipper.dart';
+import 'package:goodhouse/widgets/search_bar/index.dart';
 
 class TabIndex extends StatelessWidget {
   const TabIndex({Key key}) : super(key: key);
@@ -11,7 +12,8 @@ class TabIndex extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title:Text("首页tab")
+        title:SearchBar(),
+        backgroundColor: Colors.white,
       ),
       body:ListView(
         children:<Widget>[
