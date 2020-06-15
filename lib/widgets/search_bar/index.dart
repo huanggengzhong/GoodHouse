@@ -15,8 +15,8 @@ class SearchBar extends StatefulWidget {
       {Key key,
       this.showLocation,
       this.goBackCallback,
-      this.inputValue="",
-      this.defaultInputValue="请输入搜索词",
+      this.inputValue = "",
+      this.defaultInputValue = "请输入搜索词",
       this.onCancel,
       this.showMap,
       this.onSearch,
@@ -28,6 +28,21 @@ class SearchBar extends StatefulWidget {
 }
 
 class _SearchBarState extends State<SearchBar> {
+  String _searchWord = '';
+  TextEditingController _controller; //输入框的控制器
+  _onClean() {
+    _controller.clear(); //清除输入框控制器
+    setState(() {
+      _searchWord='';
+    });
+  }
+  // 初始化控制器
+  @override
+  void initState(){
+    _controller=TextEditingController(text:widget.inputValue);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -66,15 +81,35 @@ class _SearchBarState extends State<SearchBar> {
                 color: Colors.grey[200]),
             margin: EdgeInsets.only(right: 10.0),
             child: TextField(
+              // 优化start
+              onTap: widget.onSearch, //使用自己定义的变量方法
+              onSubmitted: widget.onSearchSubmit,
+              textInputAction: TextInputAction.search, //按键变为搜索
+              controller: _controller, //自己定义的控制器
+              onChanged: (String value) {
+                //值改变问题
+                setState(() {
+                  _searchWord = value;
+                });
+              },
+              // 优化end
               decoration: InputDecoration(
                   hintText: '请输入搜索词',
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.only(top: -2.0, left: -10.0),
-                  suffixIcon: Icon(
-                    //后置图标
-                    Icons.clear,
-                    size: 18.0,
-                    color: Colors.grey,
+                  suffixIcon: GestureDetector(
+                    //触摸控件
+                    onTap: () {
+                      _onClean();
+                    },
+                    child: Icon(
+                      //后置图标
+                      Icons.clear,
+                      size: 18.0,
+                      color: _searchWord == ''
+                          ? Colors.grey[200]
+                          : Colors.grey, //去图标的技巧:当空时设置为没颜色
+                    ),
                   ),
                   icon: Padding(
                     padding: EdgeInsets.only(top: 4.0, left: 8.0),
