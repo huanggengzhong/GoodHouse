@@ -13,7 +13,7 @@ class TabIndex extends StatelessWidget {
     return Scaffold(
       appBar:AppBar(
         title:SearchBar(showLocation: true,showMap: true,onSearch: (){
-          // Navigator.of(context).pushNamed('search');//跳转到搜索页面
+          Navigator.of(context).pushNamed('search');//跳转到搜索页面
           print("跳转到搜索页面测试");
         },),
         backgroundColor: Colors.white,

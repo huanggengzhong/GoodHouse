@@ -5,12 +5,14 @@ import 'package:goodhouse/pages/login/login.dart';
 import 'package:goodhouse/pages/register.dart';
 // import 'package:goodhouse/pages/not_found.dart';
 import 'package:goodhouse/pages/room_detail/index.dart';
+import 'package:goodhouse/pages/search/index.dart';
 
 class Routes {
   static String home="/";
   static String login="/login";
   static String rigister="rigister";
   static String room="/room/:roomId";
+  static String search="/search";
 
   static Handler _homeHandler = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
   return HomePage();
@@ -20,6 +22,9 @@ class Routes {
   });
   static Handler _rigisterHandler = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
   return RigisterPage();
+  });
+  static Handler _search = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+  return SearchPage();
   });
   // static Handler _notFoundHandler=Handler(handlerFunc: (BuildContext context, Map<String,dynamic> params) {
   //   return NotFoundPage();
@@ -37,6 +42,7 @@ class Routes {
   router.define(login,handler:_loginHandler);
   router.define(room,handler:_roomDetailPage);
   router.define(rigister,handler:_rigisterHandler);
+  router.define(search,handler:_search);
   // router.notFoundHandler=_notFoundHandler;//目前有问题,报The method 'inheritFromWidgetOfExactType' was called on null错误
   }
 }
