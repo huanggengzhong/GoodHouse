@@ -109,10 +109,12 @@ router.define(login,handler:_loginHandler);
 import 'package:goodhouse/routes.dart';
    Router router=Router();
  Routes.configureRoutes(router);
- 
+
 ```
+
 6. 测试路由
-在page_content文件中添加按钮查看效果.
+   在 page_content 文件中添加按钮查看效果.
+
 ```js
  FlatButton(child:Text(Routes.home),onPressed:(){
          Navigator.pushNamed(context,Routes.home);
@@ -120,7 +122,7 @@ import 'package:goodhouse/routes.dart';
        FlatButton(child:Text(Routes.login),onPressed:(){
          Navigator.pushNamed(context,Routes.login);
        }),
-  
+
 ```
 
 ### 优化路由(参数传递)
@@ -129,11 +131,12 @@ import 'package:goodhouse/routes.dart';
 
 1. 在 /pages 目录添加 room_detail/index.dart 文件
 2. 实现 RoomDetailPage
-3. 在 /routes.dart 添加 _roomDetailPage
+3. 在 /routes.dart 添加 \_roomDetailPage
 4. 在 /routes.dart 的 configureRoutes 中添加 RoomDetailPage;
 5. 修改 PageContent 测试
 
 ### 登录页面
+
 #### scafford
 
 - appBar
@@ -143,10 +146,13 @@ import 'package:goodhouse/routes.dart';
 - 密码— TextField
 - 登陆按钮— RaisedButton
 - 注册链接— Row[Text,FlatButton]
+
 #### 添加密码显示与隐藏
+
 1. 将无状态组件改成有状态组件— 快速方法组件名右键重构
 2. 添加可点击的图标— IconButton
-```js
+
+`````js
 TextField(
   ​       decoration: InputDecoration(
   ​         labelText:"密码",
@@ -167,7 +173,7 @@ TextField(
 
 ​```js
 bool showPassword=false;
-```
+`````
 
 4. 根据状态展示不同内容
 5. 给图标添加点击事件
@@ -180,7 +186,6 @@ bool showPassword=false;
 
 ```js
 minimum: EdgeInsets.all(30.0); //解决padding问题
- 
 ```
 
 垂直高度不足问题？
@@ -408,65 +413,65 @@ class IndexNavigator extends StatelessWidget {
    final localworkUrlRef=RegExp('^static');//本地图片
    ```
 
-
-2. 编写框架代码
+2) 编写框架代码
    1. 编写无状态组件
    2. 完善组件参数 src width height fit
-3. 完成核心逻辑
+3) 完成核心逻辑
+
    1. 如果是网络图片，使用 flutter_advanced_networkimage
    2. 如果是本地图片，使用 Image.asset
    3. 返回 Container
-   
-  ```js
-  import 'dart:html';
+
+```js
+import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_networkimage/provider.dart';
 
 final networkUrlRef=RegExp('^http');//网络图片
 final localworkUrlRef=RegExp('^static');//本地图片
 
- class CommonImage extends StatelessWidget {
+class CommonImage extends StatelessWidget {
 
-   final String src;
-   final double width;
-   final double height;
-   final BoxFit fit;//图片的适应模式类型
+ final String src;
+ final double width;
+ final double height;
+ final BoxFit fit;//图片的适应模式类型
 
-  const CommonImage({this.src,Key key,  this.width, this.height, this.fit}) : super(key: key);//把this.src放在最前面
+const CommonImage({this.src,Key key,  this.width, this.height, this.fit}) : super(key: key);//把this.src放在最前面
 
 
 
-   @override
-   Widget build(BuildContext context) {
-    if(networkUrlRef.hasMatch(src)){//正则判断是否网络图片
-      return Image(
-        width: width,
-        height: height,
-        fit: fit,
-        image: AdvancedNetworkImage(
-          src,
-          useDiskCache: true,//磁盘缓存
-          cacheRule: CacheRule(maxAge:Duration(days:7)),//保存时间
-          timeoutDuration: Duration(seconds: 20)//超时时间
-        ),
-       );
-    }
-    if(localworkUrlRef.hasMatch(src)){
-      return Image.asset(
+ @override
+ Widget build(BuildContext context) {
+  if(networkUrlRef.hasMatch(src)){//正则判断是否网络图片
+    return Image(
+      width: width,
+      height: height,
+      fit: fit,
+      image: AdvancedNetworkImage(
         src,
-        width: width,
-        height: height,
-        fit: fit,
-      );
-    }
-    assert(false,"图片地址不合法");//抛出异常
-    return Container();
+        useDiskCache: true,//磁盘缓存
+        cacheRule: CacheRule(maxAge:Duration(days:7)),//保存时间
+        timeoutDuration: Duration(seconds: 20)//超时时间
+      ),
+     );
+  }
+  if(localworkUrlRef.hasMatch(src)){
+    return Image.asset(
+      src,
+      width: width,
+      height: height,
+      fit: fit,
+    );
+  }
+  assert(false,"图片地址不合法");//抛出异常
+  return Container();
 
 
-   }
  }
+}
 
-````
+```
 
 4. 使用 CommonImage
 
@@ -561,7 +566,9 @@ class IndexRecommond extends StatelessWidget {
 
 
 ```
-优化提取item
+
+优化提取 item
+
 ```js
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/tab_index/index_recommond_data.dart';
@@ -571,7 +578,7 @@ var textStyle=TextStyle(fontSize:14.0,fontWeight:FontWeight.w500);
 
 class IndexRecommendItemWidget extends StatelessWidget {
   final IndexRecommendItem data;
-  
+
   const IndexRecommendItemWidget(this.data, {Key key}) : super(key: key);
 
   @override
@@ -606,7 +613,9 @@ class IndexRecommendItemWidget extends StatelessWidget {
 ```
 
 ### 资讯部分
-数据准备home/info/data.dart
+
+数据准备 home/info/data.dart
+
 ```js
 // 资讯数据准备,注意下面的格式
 
@@ -632,7 +641,7 @@ const List<InfoItem> infoData = [
 
 ```
 
-内容编码info/index.dart
+内容编码 info/index.dart
 
 ```js
 import 'package:flutter/material.dart';
@@ -644,7 +653,7 @@ class Info extends StatelessWidget {
   final List<InfoItem> dataList;
 
   const Info({Key key,this.showTitle=false, this.dataList=infoData}) : super(key: key);//infoData是data.dart文件内容
- 
+
 
   @override
   Widget build(BuildContext context) {
@@ -658,7 +667,7 @@ class Info extends StatelessWidget {
           ),
           Column(
             children:dataList.map((myitem) =>
-            
+
             //  Container(
             //   height:100.0,
             //   margin:EdgeInsets.only(bottom:10.0),
@@ -674,7 +683,9 @@ class Info extends StatelessWidget {
 }
 
 ```
-子选项内容info/item_widget.dat
+
+子选项内容 info/item_widget.dat
+
 ```js
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/info/data.dart';
@@ -721,11 +732,13 @@ class ItemWidget extends StatelessWidget {
 }
 ```
 
-### 首页资讯tab_info页面
-创建tab_info/index.dart文件,复用info文件内容渲染即可
-在home/index.dart中将第三个资讯tabViewList改为TabInfo().
+### 首页资讯 tab_info 页面
+
+创建 tab_info/index.dart 文件,复用 info 文件内容渲染即可
+在 home/index.dart 中将第三个资讯 tabViewList 改为 TabInfo().
 
 ### 首页搜索页面
+
 数据准备:tab_search/dataList.dart
 **步骤：**
 
@@ -733,6 +746,7 @@ class ItemWidget extends StatelessWidget {
 2. 创建文件 /pages/home/tab_search/index.dart
 3. 引入依赖，创建有状态组件
 4. 编写主体结构(使用列表组件和搜索组件分离)
+
 ```js
 import 'package:flutter/material.dart';
 
@@ -762,14 +776,16 @@ class _TabSearchState extends State<TabSearch> {
             )).toList(),
           ),)
       ],),
-      
+
     );
   }
 }
 ```
-然后封装item和tags:
+
+然后封装 item 和 tags:
 common_tag.dart(中间用工厂构造函数)/room_list_item_widget.dart
 工厂函数用法：
+
 ```js
 import 'package:flutter/material.dart';
 class CommonTag extends StatelessWidget {
@@ -805,7 +821,7 @@ class CommonTag extends StatelessWidget {
         color:Colors.orange,
         backgroundColor: Colors.orange[50],
       );
-        
+
       default:
       return CommonTag.origin(title);
     }
@@ -832,13 +848,16 @@ class CommonTag extends StatelessWidget {
   }
 }
 ```
+
 ### 搜索组件封装开发
+
 步骤：
 
 1. 创建文件 /widgets/search_bar/index.dart
 2. 引入 material 依赖， 创建有状态组件，添加参数
 3. 编写界面代码
 4. 测试
+
 ```js
 import 'package:flutter/material.dart';
 import 'package:goodhouse/widgets/common_image.dart';
@@ -982,3 +1001,16 @@ class _SearchBarState extends State<SearchBar> {
 
 
 ```
+
+#### 主页搜索页使用封装好的搜索组件
+
+````js
+  appBar:AppBar(
+        title:SearchBar(showLocation: true,showMap: true,onSearch: (){
+          // Navigator.of(context).pushNamed('search');//跳转到搜索页面
+          print("跳转到搜索页面测试");
+        },),
+        backgroundColor: Colors.white,
+      ),
+      ```
+````
