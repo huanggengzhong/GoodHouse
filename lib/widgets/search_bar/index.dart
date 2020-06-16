@@ -30,16 +30,19 @@ class SearchBar extends StatefulWidget {
 class _SearchBarState extends State<SearchBar> {
   String _searchWord = '';
   TextEditingController _controller; //输入框的控制器
+  FocusNode _focus; //焦点声明
   _onClean() {
     _controller.clear(); //清除输入框控制器
     setState(() {
-      _searchWord='';
+      _searchWord = '';
     });
   }
+
   // 初始化控制器
   @override
-  void initState(){
-    _controller=TextEditingController(text:widget.inputValue);
+  void initState() {
+    _focus = FocusNode(); //初始化焦点
+    _controller = TextEditingController(text: widget.inputValue);
     super.initState();
   }
 
@@ -74,7 +77,7 @@ class _SearchBarState extends State<SearchBar> {
                     ]))),
           Expanded(
               //自适应组件
-              child: Container(
+            child: Container(
             height: 34.0,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(17.0),
@@ -82,7 +85,14 @@ class _SearchBarState extends State<SearchBar> {
             margin: EdgeInsets.only(right: 10.0),
             child: TextField(
               // 优化start
-              onTap: widget.onSearch, //使用自己定义的变量方法
+              focusNode: _focus,
+              onTap: (){
+                if(widget.onSearchSubmit==null) {
+                  _focus.unfocus();//解决回退失去焦点问题
+                }
+              widget.onSearch(); //使用自己定义的变量方法
+
+              },
               onSubmitted: widget.onSearchSubmit,
               textInputAction: TextInputAction.search, //按键变为搜索
               controller: _controller, //自己定义的控制器
