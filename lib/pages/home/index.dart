@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/tab_index/index.dart';
 import 'package:goodhouse/pages/home/tab_info/index.dart';
+import 'package:goodhouse/pages/home/tab_profile/index.dart';
 import 'package:goodhouse/pages/home/tab_search/index.dart';
-import 'package:goodhouse/widgets/page_content.dart';
+// import 'package:goodhouse/widgets/page_content.dart';
 
 // 1. 需要准备 4 个 tab 内容区（tabView）
 List<Widget> tabViewList = [
@@ -12,7 +13,8 @@ List<Widget> tabViewList = [
   TabSearch(),
   // PageContent(name: '咨询'),
   TabInfo(),
-  PageContent(name: '我的'),
+  // PageContent(name: '我的'),
+  TabProfile()
 ];
 
 // 2. 需要准备 4 个 BottomNavigationBarItem
