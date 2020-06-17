@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodhouse/pages/home/tab_profile/header.dart';
 class TabProfile extends StatelessWidget {
   const TabProfile({Key key}) : super(key: key);
 
@@ -6,6 +7,7 @@ class TabProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation:0,//去掉边框
         title:Text('我的'),
         actions:<Widget>[//右侧组件
           IconButton(
@@ -20,6 +22,7 @@ class TabProfile extends StatelessWidget {
       
       body:ListView(
         children: <Widget>[
+          Header(),
           Text('内容区域')
         ],
       )
