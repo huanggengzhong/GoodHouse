@@ -39,7 +39,8 @@ class Header extends StatelessWidget {
                 GestureDetector(
                   //手势组件
                   onTap: () {
-                    Navigator.of(context).pushNamed("register");
+                    print("点击了注册");
+                    Navigator.of(context).pushNamed("rigister");
                   },
                   child: Text('注册', style: loginFontStyle),
                 ),
