@@ -7,6 +7,7 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var isLogin=false;
     return Container(
       decoration: BoxDecoration(color: Colors.green),
       height: 95.0,
