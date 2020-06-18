@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:goodhouse/pages/home/tab_profile/function_button.dart';
+import 'package:goodhouse/pages/home/tab_profile/function_button_data.dart';
 import 'package:goodhouse/pages/home/tab_profile/header.dart';
 class TabProfile extends StatelessWidget {
   const TabProfile({Key key}) : super(key: key);
@@ -23,6 +25,7 @@ class TabProfile extends StatelessWidget {
       body:ListView(
         children: <Widget>[
           Header(),
+          FunctionButton(),
           Text('内容区域')
         ],
       )
