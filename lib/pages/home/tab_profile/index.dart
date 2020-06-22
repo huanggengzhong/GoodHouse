@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodhouse/pages/home/info/index.dart';
 import 'package:goodhouse/pages/home/tab_profile/advertisement.dart';
 import 'package:goodhouse/pages/home/tab_profile/function_button.dart';
 import 'package:goodhouse/pages/home/tab_profile/function_button_data.dart';
@@ -28,7 +29,8 @@ class TabProfile extends StatelessWidget {
           Header(),
           FunctionButton(),
           Advertisement(),
-          Text('内容区域')
+          Info(showTitle:true),//启用当初设置的title
+          // Text('内容区域')
         ],
       )
     );
