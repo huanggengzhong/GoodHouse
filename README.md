@@ -1315,3 +1315,6 @@ Fluttertoast.showToast(
    2. 在路由系统注册当前页面
    3. 添加`退出登陆`按钮
    4. 实现退出登陆逻辑
+   
+   ### 房屋管理页面开始
+   参考flutter官网的appBar:https://flutterchina.club/catalog/samples/tabbed-app-bar/
