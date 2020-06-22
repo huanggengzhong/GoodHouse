@@ -15,8 +15,8 @@ class TabProfile extends StatelessWidget {
         actions:<Widget>[//右侧组件
           IconButton(
             onPressed: (){
-              // Navigator.of(context).pushNamed(routeName);
               print("准备跳转到设置页");
+              Navigator.of(context).pushNamed("setting");
             },
             icon:Icon(Icons.settings),
           )

@@ -1263,3 +1263,55 @@ class Advertisement extends StatelessWidget {
   }
 }
 ```
+### 右上角设置页
+
+**效果：**
+
+<div align=left>
+  <img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g872a22ec3j30cm0mygnr.jpg" alt="image-20191022163305038" style="zoom:50%;" />
+  <img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g872aihmqjj30cm0mygnv.jpg" alt="image-20191022163331340" style="zoom:50%;" />
+</div?
+
+
+
+**分析：**
+
+需要 toast 弹窗，使用 [fluttertoast](https://github.com/PonnamKarthik/FlutterToast)
+
+用法：
+
+  ```dart
+// 1. 安装依赖
+fluttertoast: ^4.0.0
+
+// 2. 引入依赖
+import 'package:fluttertoast/fluttertoast.dart';
+
+// 3. 使用
+Fluttertoast.showToast(
+        msg: "This is Center Short Toast",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+  ```
+
+
+
+**步骤：**
+
+1. 准备
+
+   1. 按照依赖 fluttertoast: ^3.1.3
+   2. utils/common_toast.dart 新建文件，封装 CommonToast
+   3. 新建文件 pages/setting.dart，引入依赖，添加无状态组件
+
+2. 核心编码
+
+   1. 完成页面主体结构
+   2. 在路由系统注册当前页面
+   3. 添加`退出登陆`按钮
+   4. 实现退出登陆逻辑
