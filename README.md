@@ -60,7 +60,7 @@ flutter run
 
 ### 路由配置
 
-1. 安装(如果安装不了,可以参考另一种我的另一篇博客方法https://blog.csdn.net/xiaodi520520/article/details/99672182)
+1. 安装(如果安装不了,可以参考我的另一篇博客方法https://blog.csdn.net/xiaodi520520/article/details/99672182)
 
 ```js
 dependencies:
@@ -1209,6 +1209,56 @@ class FunctionButton extends StatelessWidget {
           decoration: BoxDecoration(color:Colors.red),
         )).toList(),
       )
+    );
+  }
+}
+```
+item选项组件封装
+```js
+import 'package:flutter/material.dart';
+
+import '../../../widgets/common_image.dart';
+import 'function_button_data.dart';
+
+class FunctionButtonWidget extends StatelessWidget {
+  final FunctionButtonItem data;
+  const FunctionButtonWidget(this.data,{Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap:(){
+        if(data.onTapHandle!=null){
+          data.onTapHandle(context);
+        }
+      },
+      child:Container(
+        margin: EdgeInsets.only(top:30.0),
+        width: MediaQuery.of(context).size.width*0.33,
+        child: Column(
+          children:<Widget>[
+            CommonImage(src:data.imageUrl),
+            Text(data.title)
+          ]
+        ),
+      )
+    );
+  }
+}
+```
+广告组件Advertisement.dart
+```js
+import 'package:flutter/material.dart';
+
+import '../../../widgets/common_image.dart';
+class Advertisement extends StatelessWidget {
+  const Advertisement({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(top:30.0,bottom:20.0,left:10.0,right:10.0),
+      child: CommonImage(src:'https://tva1.sinaimg.cn/large/006y8mN6ly1g6te62n8f4j30j603vgou.jpg')
     );
   }
 }

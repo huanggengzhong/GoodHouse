@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodhouse/pages/home/tab_profile/advertisement.dart';
 import 'package:goodhouse/pages/home/tab_profile/function_button.dart';
 import 'package:goodhouse/pages/home/tab_profile/function_button_data.dart';
 import 'package:goodhouse/pages/home/tab_profile/header.dart';
@@ -26,6 +27,7 @@ class TabProfile extends StatelessWidget {
         children: <Widget>[
           Header(),
           FunctionButton(),
+          Advertisement(),
           Text('内容区域')
         ],
       )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodhouse/pages/home/tab_profile/function_button_widget.dart';
 
 import 'function_button_data.dart';
 class FunctionButton extends StatelessWidget {
@@ -10,11 +11,7 @@ class FunctionButton extends StatelessWidget {
       child: Wrap(
         spacing: 1.0,
         runSpacing: 1.0,
-        children:list.map((item)=>Container(
-          height:20.0,
-          width:MediaQuery.of(context).size.width*0.33,
-          decoration: BoxDecoration(color:Colors.red),
-        )).toList(),
+        children:list.map((item)=>FunctionButtonWidget(item)).toList(),
       )
     );
   }

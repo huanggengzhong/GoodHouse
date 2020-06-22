@@ -60,6 +60,14 @@ flutter:
     - static/images/home_index_recommend_3.png
     - static/images/home_index_recommend_4.png
     - static/icons/widget_search_bar_map.png
+    - static/images/home_profile_record.png
+    - static/images/home_profile_order.png
+    - static/images/home_profile_favor.png
+    - static/images/home_profile_id.png
+    - static/images/home_profile_message.png
+    - static/images/home_profile_contract.png
+    - static/images/home_profile_house.png
+    - static/images/home_profile_wallet.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
