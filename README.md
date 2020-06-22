@@ -1,10 +1,10 @@
 ### 好客租房 App 开发
 
-### 练习 dart 语言的方法
+### 练习 dart 语言的插件
 
 下载 code runner 插件,dart 文件右键运行即可.
 
-#### 项目创建
+#### 开始项目创建
 
 项目【菜单】— 【查看】—【命令面板】— 【Flutter：New Project】
 测试页面代码:lib/main.dart
@@ -60,13 +60,13 @@ flutter run
 
 ### 路由配置
 
-1. 安装
+1. 安装(如果安装不了,可以参考另一种我的另一篇博客方法https://blog.csdn.net/xiaodi520520/article/details/99672182)
 
 ```js
 dependencies:
 // 下面有空格,安装好后再通过.lock文件吧版本号写回去
 fluro: any
-如果安装不了,可以参考另一种方法https://blog.csdn.net/xiaodi520520/article/details/99672182
+
 ```
 
 2. 添加 /pages/login.dart
@@ -220,7 +220,7 @@ Navigator.pushReplacementNamed(context, "login"); //可以删除记录
 
 ### 首页开始
 
-参考官方代码:
+参考pubpacka官方代码:
 (注意我的环境有两处要改)
 
 ```js
@@ -1023,12 +1023,12 @@ class _SearchBarState extends State<SearchBar> {
         },),
         backgroundColor: Colors.white,
       ),
-      ```
+```
 ````
 
 ### 我的页面
 创建tab_profile/index.dart
-```js
+​```js
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/tab_profile/header.dart';
 class TabProfile extends StatelessWidget {
