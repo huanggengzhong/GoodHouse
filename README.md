@@ -1318,3 +1318,88 @@ Fluttertoast.showToast(
    
    ### 房屋管理页面开始
    参考flutter官网的appBar:https://flutterchina.club/catalog/samples/tabbed-app-bar/
+   ```js
+   import 'package:flutter/material.dart';
+import 'package:goodhouse/pages/home/tab_search/dataList.dart';
+import 'package:goodhouse/widgets/room_list_item_widget.dart';
+
+class RoomManagePage extends StatelessWidget {
+  const RoomManagePage({Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+        length: 2,//tab个数
+        initialIndex: 0,//初始索引
+        child: Scaffold(
+          appBar: AppBar(
+            title:  Text('房屋管理'),
+            bottom: TabBar(
+              tabs: <Widget>[
+                Tab(text:'空置'),
+                Tab(text:'已租'),
+              ]
+            ),
+          ),
+          body: TabBarView(
+            children: <Widget>[
+              ListView(
+                children:dataList.map((item)=>
+                RoomListItemWidget(item)
+                ).toList()
+              ),
+              ListView(
+                children:dataList.map((item)=>
+                RoomListItemWidget(item)
+                ).toList()
+              )
+            ]
+          ),
+        ),
+      );
+    
+  }
+}
+```
+同时增加底部悬浮按钮
+准备悬浮按钮common_floating_button.dart组件
+```js
+import 'package:flutter/material.dart';
+class CommonFloatingButton extends StatelessWidget {
+  final String title;
+  final Function onTap;
+
+  const CommonFloatingButton(this.title, this.onTap,{Key key}) : super(key: key);
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap:(){
+        if(onTap!=null) onTap();
+      },
+      child:Container(
+        margin: EdgeInsets.all(20.0),
+        height: 40.0,
+        decoration: BoxDecoration(
+          borderRadius:BorderRadius.circular(10.0),
+          color:Colors.green
+        ),
+        child: Center(
+          child:Text(title,style:TextStyle(
+            color:Colors.white,
+            fontSize:16.0,
+            fontWeight:FontWeight.w600
+          ))
+        ),
+      )
+    );
+  }
+}
+```
+在Scaffold组件中加入悬浮按钮
+```js
+floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,//悬浮位置
+          floatingActionButton: CommonFloatingButton('发布房源', (){
+            Navigator.of(context).pushNamed("login");
+          }),
+```
