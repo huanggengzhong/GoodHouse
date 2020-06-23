@@ -13,7 +13,7 @@ class RoomManagePage extends StatelessWidget {
         child: Scaffold(
           floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,//悬浮位置
           floatingActionButton: CommonFloatingButton('发布房源', (){
-            Navigator.of(context).pushNamed("login");
+            Navigator.of(context).pushNamed("roomAdd");
           }),
           appBar: AppBar(
             title:  Text('房屋管理'),
