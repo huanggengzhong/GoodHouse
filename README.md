@@ -1404,3 +1404,4 @@ floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,//悬浮�
           }),
 ```
 ### 发布房源页面开发
+封装了title,item
