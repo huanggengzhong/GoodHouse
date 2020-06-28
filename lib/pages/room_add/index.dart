@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goodhouse/widgets/common_floating_button.dart';
+import 'package:goodhouse/widgets/common_form_item.dart';
 import 'package:goodhouse/widgets/common_title.dart';
 
 class RoomAddPage extends StatefulWidget {
@@ -23,6 +24,18 @@ class _RoomAddPageState extends State<RoomAddPage> {
       body:ListView(
         children:<Widget>[
           CommonTitle('房源信息'),
+          CommonFormItemWidget(
+            label: '租金',
+            hitText:'请输入租金',
+            suffixText: '元/月',
+            controller: TextEditingController(),
+          ),
+          CommonFormItemWidget(
+            label: '大小',
+            hitText:'请输入房屋大小',
+            suffixText: '平方米',
+            controller: TextEditingController(),
+          ),
           CommonTitle('房屋头像'),
           CommonTitle('房屋标题'),
           CommonTitle('房屋配置'),

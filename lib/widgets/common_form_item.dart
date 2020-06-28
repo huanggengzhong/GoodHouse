@@ -7,25 +7,47 @@ class CommonFormItemWidget extends StatelessWidget {
   final String suffixText;
   final String hitText;
   final ValueChanged onChanged;
-  final TextEditingController contronller;
+  final TextEditingController controller;
 
-  const CommonFormItemWidget({Key key, this.label, this.contentBuilder, this.suffix, this.suffixText, this.hitText, this.onChanged, this.contronller}) : super(key: key);
+  const CommonFormItemWidget(
+      {Key key,
+      this.label,
+      this.contentBuilder,
+      this.suffix,
+      this.suffixText,
+      this.hitText,
+      this.onChanged,
+      this.controller})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Row(
-        children: <Widget>[
-          Container(
-            width:100.0,
-            child:Text(
-              label,
-              style:TextStyle(fontSize:16.0,color:Colors.black87)
-            )
+        padding: EdgeInsets.only(left: 14.0, right: 14.0),
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+                width: 1.0, color: Theme.of(context).dividerColor //获取主题颜色
+                ),
           ),
-          
-        ],
-      )
-    );
+        ),
+        child: Row(
+          children: <Widget>[
+            Container(
+                width: 100.0,
+                child: Text(label,
+                    style: TextStyle(fontSize: 16.0, color: Colors.black87))),
+            contentBuilder != null
+                ? contentBuilder(context)
+                : Expanded(
+                    child: TextField(
+                    controller: controller,
+                    decoration: InputDecoration(
+                        border: InputBorder.none, hintText: hitText),
+                  )),
+            if (suffix != null) suffix,
+            if (suffix == null && suffixText != null) Text(suffixText),
+          ],
+        ));
   }
 }
