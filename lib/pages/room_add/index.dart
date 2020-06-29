@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goodhouse/widgets/common_floating_button.dart';
 import 'package:goodhouse/widgets/common_form_item.dart';
+import 'package:goodhouse/widgets/common_radio_form_item.dart';
 import 'package:goodhouse/widgets/common_title.dart';
 
 class RoomAddPage extends StatefulWidget {
@@ -11,6 +12,8 @@ class RoomAddPage extends StatefulWidget {
 }
 
 class _RoomAddPageState extends State<RoomAddPage> {
+  int rentType=0;
+  int rentTypeTwo=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,11 +31,12 @@ class _RoomAddPageState extends State<RoomAddPage> {
             label: '小区',
             contentBuilder:(context){
               return Container(
+                height: 40.0,
+                width: 280.0,
                 child:GestureDetector(
-                  behavior: HitTestBehavior.translucent,//解决点击空白地方无效
+                  behavior: HitTestBehavior.translucent,//解决点击空白地方无效问题
                   child: Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text('请选择小区',style:TextStyle(
                         fontSize:16.0
@@ -59,6 +63,26 @@ class _RoomAddPageState extends State<RoomAddPage> {
             suffixText: '平方米',
             controller: TextEditingController(),
           ),
+          CommonRadioFormIten(
+            label: '租赁方式',
+            options: ['合租', '整租'],
+            value: rentType,
+            onChange: (index){
+              print(index);
+              setState(() {
+                rentType=index;
+              });
+            },
+          ),
+          CommonRadioFormIten(
+              label: '装修',
+              options: ['精装', '简装'],
+              value: rentTypeTwo,
+              onChange: (index) {
+                setState(() {
+                  rentTypeTwo = index;
+                });
+              }),
           CommonTitle('房屋头像'),
           CommonTitle('房屋标题'),
           CommonTitle('房屋配置'),
