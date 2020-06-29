@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goodhouse/widgets/common_floating_button.dart';
 import 'package:goodhouse/widgets/common_form_item.dart';
 import 'package:goodhouse/widgets/common_radio_form_item.dart';
+import 'package:goodhouse/widgets/common_select_form_item.dart';
 import 'package:goodhouse/widgets/common_title.dart';
 
 class RoomAddPage extends StatefulWidget {
@@ -83,6 +84,12 @@ class _RoomAddPageState extends State<RoomAddPage> {
                   rentTypeTwo = index;
                 });
               }),
+          CommonSelectFormItemWedget(
+            label: '户型',
+            value:0,
+            onChange: (val){},
+            options: ['一室'],
+          ),
           CommonTitle('房屋头像'),
           CommonTitle('房屋标题'),
           CommonTitle('房屋配置'),

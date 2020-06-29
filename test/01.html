@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <span class="one">3846</span>
+  <br>
+  <span class="two"></span>
+</body>
+
+</html>
+<script>
+  function formatSeconds(value) {
+    var secondTime = parseInt(value); // 秒
+    var minuteTime = 0; // 分
+    var hourTime = 0; // 小时
+    if (secondTime > 60) {
+      minuteTime = parseInt(secondTime / 60);
+      secondTime = parseInt(secondTime % 60);
+      if (minuteTime > 60) {
+        hourTime = parseInt(minuteTime / 60);
+        minuteTime = parseInt(minuteTime % 60);
+      }
+    }
+    var result = "" + parseInt(secondTime) + "秒";
+    if (minuteTime > 0) {
+      result = "" + parseInt(minuteTime) + "分" + result;
+    }
+    if (hourTime > 0) {
+      result = "" + parseInt(hourTime) + "小时" + result;
+    }
+    return result;
+  }
+  let value = (document.querySelector('.one').innerText);
+  console.log("转换后的值:",formatSeconds(value));
+  document.querySelector('.two').innerText = formatSeconds(value)
+</script>
