@@ -24,6 +24,29 @@ class _RoomAddPageState extends State<RoomAddPage> {
       body:ListView(
         children:<Widget>[
           CommonTitle('房源信息'),
+          CommonFormItemWidget(//自定义小区
+            label: '小区',
+            contentBuilder:(context){
+              return Container(
+                child:GestureDetector(
+                  behavior: HitTestBehavior.translucent,//解决点击空白地方无效
+                  child: Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text('请选择小区',style:TextStyle(
+                        fontSize:16.0
+                      )),
+                      Icon(Icons.keyboard_arrow_right)
+                    ],
+                  ),
+                  onTap: (){
+                    print("跳转选择小区页");
+                  },
+                )
+              );
+            }
+          ),
           CommonFormItemWidget(
             label: '租金',
             hitText:'请输入租金',
