@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodhouse/utils/common_picker/index.dart';
 import 'package:goodhouse/widgets/common_form_item.dart';
 
 class CommonSelectFormItemWedget extends StatelessWidget {
@@ -16,18 +17,31 @@ class CommonSelectFormItemWedget extends StatelessWidget {
     return CommonFormItemWidget(
       label: label,
       contentBuilder: (context) {
-        return Container(
-          width: 282.0,
-          height: 40.0,
-          
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(options[value], style: TextStyle(fontSize: 16.0)),
-              Icon(Icons.keyboard_arrow_right)
-            ],
-          ),
-        );
+        return GestureDetector(
+            behavior: HitTestBehavior.translucent,
+            onTap: () {
+              var result=CommonPickerWidget.showPicker(
+                context:context,
+                options:options,
+                value:value
+              );
+              result.then((selectdValue){
+                if(value!=selectdValue&&selectdValue!=null&&onChange!=null){
+                  onChange(selectdValue);
+                }
+              });//回调函数
+            },
+            child: Container(
+              width: 282.0,
+              height: 40.0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(options[value], style: TextStyle(fontSize: 16.0)),
+                  Icon(Icons.keyboard_arrow_right)
+                ],
+              ),
+            ));
       },
     );
   }
