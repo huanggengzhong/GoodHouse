@@ -88,7 +88,7 @@ class _RoomAddPageState extends State<RoomAddPage> {
             label: '户型',
             value:0,
             onChange: (val){},
-            options: ['一室','二室','三室',"四室"],
+            options: ['一室','二室','三室','四室'],
           ),
           CommonTitle('房屋头像'),
           CommonTitle('房屋标题'),
