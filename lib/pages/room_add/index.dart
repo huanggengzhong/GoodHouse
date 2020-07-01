@@ -15,6 +15,7 @@ class RoomAddPage extends StatefulWidget {
 class _RoomAddPageState extends State<RoomAddPage> {
   int rentType=0;
   int rentTypeTwo=0;
+  int roomType = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +88,11 @@ class _RoomAddPageState extends State<RoomAddPage> {
           CommonSelectFormItemWedget(
             label: '户型',
             value:0,
-            onChange: (val){},
+            onChange: (val){
+              setState(() {
+                roomType=val;
+              });
+            },
             options: ['一室','二室','三室','四室'],
           ),
           CommonTitle('房屋头像'),

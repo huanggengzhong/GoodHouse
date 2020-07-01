@@ -14,6 +14,7 @@ class CommonPickerWidget {
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.w600
             );
+            var controller=FixedExtentScrollController(initialItem:value);
             return Container(
               color:Colors.grey,
               height:300.0,
@@ -26,8 +27,10 @@ class CommonPickerWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         FlatButton(onPressed: (){
+                          Navigator.of(context).pop();
                         }, child: Text('取消',style: buttonTyxtStyle,)),
                         FlatButton(onPressed: (){
+                          Navigator.of(context).pop(controller.selectedItem);
                         }, child: Text('确定',style: buttonTyxtStyle,))
                       ],
                     ),
