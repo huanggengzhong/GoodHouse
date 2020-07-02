@@ -20,7 +20,7 @@ class CommonSelectFormItemWedget extends StatelessWidget {
         return GestureDetector(
             behavior: HitTestBehavior.translucent,
             onTap: () {
-              var result=CommonPickerWidget.showPicker(
+              var result=CommonPicker.showPicker(
                 context:context,
                 options:options,
                 value:value
