@@ -25,9 +25,9 @@ class CommonSelectFormItemWedget extends StatelessWidget {
                 options:options,
                 value:value
               );
-              result.then((selectdValue){
-                if(value!=selectdValue&&selectdValue!=null&&onChange!=null){
-                  onChange(selectdValue);
+              result.then((selectedValue){
+                if(value!=selectedValue&&selectedValue!=null&&onChange!=null){
+                  onChange(selectedValue);
                 }
               });//回调函数
             },

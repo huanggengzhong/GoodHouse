@@ -87,7 +87,7 @@ class _RoomAddPageState extends State<RoomAddPage> {
               }),
           CommonSelectFormItemWedget(
             label: '户型',
-            value:0,
+            value:roomType,
             onChange: (val){
               setState(() {
                 roomType=val;

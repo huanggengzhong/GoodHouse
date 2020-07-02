@@ -8,9 +8,10 @@ class CommonPickerWidget {
       List<String> options, //字符串数组
       int value //选项值
       }) {
-        return showCupertinoModalPopup(//半瓶弹框组件
-          context: context, builder: (BuildContext context){
-            var buttonTyxtStyle=TextStyle(
+        return showCupertinoModalPopup<int>(//半瓶弹框组件
+          context: context, 
+          builder: (BuildContext context){
+            var buttonTextStyle=TextStyle(
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.w600
             );
@@ -28,10 +29,10 @@ class CommonPickerWidget {
                       children: <Widget>[
                         FlatButton(onPressed: (){
                           Navigator.of(context).pop();
-                        }, child: Text('取消',style: buttonTyxtStyle,)),
+                        }, child: Text('取消',style: buttonTextStyle,)),
                         FlatButton(onPressed: (){
                           Navigator.of(context).pop(controller.selectedItem);
-                        }, child: Text('确定',style: buttonTyxtStyle,))
+                        }, child: Text('确定',style: buttonTextStyle,))
                       ],
                     ),
                   ),
