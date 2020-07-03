@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goodhouse/widgets/common_floating_button.dart';
 import 'package:goodhouse/widgets/common_form_item.dart';
+import 'package:goodhouse/widgets/common_image_pick.dart';
 import 'package:goodhouse/widgets/common_radio_form_item.dart';
 import 'package:goodhouse/widgets/common_select_form_item.dart';
 import 'package:goodhouse/widgets/common_title.dart';
@@ -96,6 +97,7 @@ class _RoomAddPageState extends State<RoomAddPage> {
             options: ['一室','二室','三室','四室'],
           ),
           CommonTitle('房屋头像'),
+          CommonImagePicker(),
           CommonTitle('房屋标题'),
           CommonTitle('房屋配置'),
           CommonTitle('房屋描述'),
