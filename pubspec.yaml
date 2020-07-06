@@ -54,6 +54,12 @@ flutter:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
+
+  # 字体图标
+  fonts:
+    - family: CommonIcon
+      fonts:
+      - asset: static/fonts/iconfont.ttf 
   assets:
     # 首页——第一个tab-导航图标
     - static/images/home_index_navigator_total.png

@@ -5,6 +5,7 @@ import 'package:goodhouse/widgets/common_image_pick.dart';
 import 'package:goodhouse/widgets/common_radio_form_item.dart';
 import 'package:goodhouse/widgets/common_select_form_item.dart';
 import 'package:goodhouse/widgets/common_title.dart';
+import 'package:goodhouse/widgets/room_Appliance.dart';
 
 class RoomAddPage extends StatefulWidget {
   RoomAddPage({Key key}) : super(key: key);
@@ -104,6 +105,9 @@ class _RoomAddPageState extends State<RoomAddPage> {
        
           CommonTitle('房屋标题'),
           CommonTitle('房屋配置'),
+          RoomAppliance(
+            onChange: (data) {},
+          ),
           CommonTitle('房屋描述'),
         ]
       ),
