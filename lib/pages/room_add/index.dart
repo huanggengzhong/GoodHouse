@@ -97,10 +97,10 @@ class _RoomAddPageState extends State<RoomAddPage> {
             options: ['一室','二室','三室','四室'],
           ),
           CommonTitle('房屋图像'),
-           CommonImagePicker(
-            onChange: (List files) {},//删除File,不然会报错
-            // onChange: (List<File> files) {},
-          ),
+          //  CommonImagePicker(
+          //   onChange: (List files) {},//删除File,不然会报错
+          //   // onChange: (List<File> files) {},
+          // ),
        
           CommonTitle('房屋标题'),
           CommonTitle('房屋配置'),
