@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/room_detail/data.dart';
+import 'package:goodhouse/widgets/common_title.dart';
 import 'package:share/share.dart';
 
 class RoomDetailPage extends StatefulWidget {
@@ -33,21 +34,25 @@ class _RoomDetailPageState extends State<RoomDetailPage> {
             }),
       ],
     ),
-    // body: Stack(
-    //   children:<Widget>[
-    //     ListView(
-    //       children:<Widget>[]
-    //     )
-    //   ],
-    //   Positioned(
-    //     width:MediaQuery.of(context).size.width,
-    //     height: 100.0,
-    //     bottom: 0.00,
-    //     child: Container(
-    //       color:Colors.grey[200]
-    //     ),
-    //   )
-    // ) ,
+    body: Stack(
+      children:<Widget>[
+        ListView(
+          children:<Widget>[
+            CommonTitle('房屋配置'),
+            CommonTitle('房屋概况'),
+            CommonTitle('猜你喜欢'),
+          ]
+        ),
+      Positioned(
+        width:MediaQuery.of(context).size.width,
+        height: 100.0,
+        bottom: 0,
+        child: Container(
+          color:Colors.grey[200]
+        ),
+      )
+      ],
+    )
     );
   }
 }
