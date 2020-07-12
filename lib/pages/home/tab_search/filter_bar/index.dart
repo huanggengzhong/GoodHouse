@@ -93,10 +93,7 @@ class _FilterBarState extends State<FilterBar> {
   }
 
   _onFilterChange(context) {
-    setState(() {
-      isFilterActive = true;
-    });
-    _onChange();
+    Scaffold.of(context).openEndDrawer();//通过点击筛选,用api方式打开侧边drawer
   }
 
 //添加通知外层的方法,以便外层调用

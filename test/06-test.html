@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  let arr1 = ["原子指标33", "22原子指标", "十测试原子指标"];
+
+  let arr2 = [{
+      name: "十测试原子指标",
+      tag: "shi_test_yuanzi_zhibiao",
+      age: 20
+    },
+    {
+      name: "原子指标33",
+      tag: "3333",
+      age: 12
+    },
+    {
+      name: "22原子指标",
+      tag: "2222",
+      age: 23
+    },
+    {
+      name: "sfa",
+      tag: "hahah11",
+      age: 34
+    },
+    {
+      name: "adsfaf",
+      tag: "fffff",
+      age: 64
+    }
+  ];
+
+ 
+  // arr3 = [{
+  //     name: "原子指标33",
+  //     tag: "3333"
+  //   },
+  //   {
+  //     name: "22原子指标",
+  //     tag: "2222"
+  //   },
+  //   {
+  //     name: "十测试原子指标",
+  //     tag: "shi_test_yuanzi_zhibiao"
+  //   }
+  // ];
+
+  let arr3=[]
+  arr1.forEach(item=>{
+   let myItem= arr2.find(v=>item===v.name)
+   arr3.push({
+     name:myItem.name,
+     tag:myItem.tag
+   })
+  })
+  console.log(arr3,"arr3");
+</script>

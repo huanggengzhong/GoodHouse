@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/tab_search/dataList.dart';
+import 'package:goodhouse/pages/home/tab_search/filter_bar/fiter_drawer.dart';
 import 'package:goodhouse/pages/home/tab_search/filter_bar/index.dart';
 import 'package:goodhouse/widgets/room_list_item_widget.dart';
 import 'package:goodhouse/widgets/search_bar/index.dart';
@@ -19,12 +20,16 @@ class _TabSearchState extends State<TabSearch> {
       // appBar:AppBar(
       //   title: Text('tab搜索页'),
       // ),
+      // 抽屉组件
+      endDrawer: FilterDrawer(),
        appBar:AppBar(
+         actions: <Widget>[Container()],//去掉drawer按钮,变成滑动弹出
         title:SearchBar(showLocation: true,showMap: true,onSearch: (){
           Navigator.of(context).pushNamed('search');//跳转到搜索页面
           print("跳转到搜索页面测试");
         },),
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.blue,//背景
+        backgroundColor: Colors.white,//背景
       ),
       body:Column(
         children:<Widget>[
