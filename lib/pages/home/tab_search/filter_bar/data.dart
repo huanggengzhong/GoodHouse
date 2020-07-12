@@ -5,7 +5,7 @@ class  FilterBarResult {
   final String rentTypeId;
   final List<String> moreIds;
 
-  FilterBarResult({this.areaId, this.priceId, this.rentTypeId, this.moreIds});
+  FilterBarResult({this.areaId, this.priceId, this.rentTypeId, this.moreIds, String priceTypeId, List<String> moreId});
   
 }
 
