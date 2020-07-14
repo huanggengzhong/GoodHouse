@@ -28,6 +28,8 @@ dependencies:
   flutter_advanced_networkimage: ^0.7.0
 
   fluttertoast: ^4.0.0
+
+  scoped_model: ^1.0.1
   
   image_picker: ^0.6.1+4
   # The following adds the Cupertino Icons font to your application.
