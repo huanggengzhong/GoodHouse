@@ -109,8 +109,8 @@ class _FilterBarState extends State<FilterBar> {
           areaId: areaId,
           rentTypeId: rentTypeId,
           priceTypeId: priceTypeId,
-          moreId: selectedList.toList()
-          // moreId: moreId
+          // moreId: selectedList.toList()
+          moreId: moreId
           ));
     }
   }
