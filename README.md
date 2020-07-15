@@ -2,7 +2,7 @@
 
 ### 练习 dart 语言的插件
 
-下载 code runner 插件,dart 文件右键运行即可.
+下载安装dart sdk(网址:http://www.cndartlang.com/920.html),下载vscode插件(code runner),dart 文件右键运行即可.
 
 #### 开始项目创建
 
