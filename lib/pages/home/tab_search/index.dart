@@ -48,7 +48,7 @@ class _TabSearchState extends State<TabSearch> {
             //    margin:EdgeInsets.only(bottom:10.0),
             //    decoration: BoxDecoration(color:Colors.green),
             //  )  
-            RoomListItemWidget(item), 
+            RoomListItemWidget(item)
         ).toList()
             ),
            )

@@ -1,7 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+// import 'package:goodhouse/pages/home/tab_search/dataList.dart';
 import 'package:goodhouse/pages/home/tab_search/filter_bar/data.dart';
 import 'package:goodhouse/pages/home/tab_search/filter_bar/item.dart';
+import 'package:goodhouse/scoped_model/room_filter.dart';
 import 'package:goodhouse/utils/common_picker/index.dart';
+import 'package:goodhouse/utils/scoped_model_helper.dart';
 
 class FilterBar extends StatefulWidget {
   final ValueChanged<FilterBarResult> onChange;
@@ -98,13 +103,43 @@ class _FilterBarState extends State<FilterBar> {
 
 //添加通知外层的方法,以便外层调用
   _onChange() {
+    var selectedList=ScopedModelHelper.getModel<FilterBarModel>(context).selectedList;
     if (widget.onChange != null) {
       widget.onChange(FilterBarResult(
           areaId: areaId,
           rentTypeId: rentTypeId,
           priceTypeId: priceTypeId,
-          moreId: moreId));
+          // moreId: selectedList.toList()
+          moreId: moreId
+          ));
     }
+  }
+  //定时执行函数
+  _getData(){
+    Map<String,List<GeneralType>> dataList=Map<String,List<GeneralType>>();
+    dataList['roomTypeList']=roomTypeList;
+    dataList['orientedList']=orientedList;
+    dataList['floorList']=floorList;
+    ScopedModelHelper.getModel<FilterBarModel>(context).dataList=dataList;
+  }
+  
+// 生命周期知识回顾：
+
+// 1. 有状态组件生命周期 initState— 只执行一次，没有context,或者 context 不完整
+// 2. 有状态组件生命周期 didChangeDependencies 依赖变更后就会执行，有context，会执行多次
+// 3. 一次执行，并且需要 context
+
+  @override
+  void initState() {
+    // 一次执行的定时器
+    Timer.run(_getData);
+    super.initState();
+  }
+  @override
+  void didChangeDependencies() {
+    _onChange();
+    super.didChangeDependencies();
+    
   }
 
   @override

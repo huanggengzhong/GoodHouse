@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/tab_search/filter_bar/data.dart';
+import 'package:goodhouse/scoped_model/room_filter.dart';
+import 'package:goodhouse/utils/scoped_model_helper.dart';
 import 'package:goodhouse/widgets/common_title.dart';
 class FilterDrawer extends StatelessWidget {
   const FilterDrawer({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var selectedIds=['bb','aa','99'];
+    // 使用状态数据
+   var dataList= ScopedModelHelper.getModel<FilterBarModel>(context).dataList;
+   roomTypeList=dataList['roomTypeList'];
+   orientedList=dataList['orientedList'];
+   floorList=dataList['floorList'];
+
+    // var selectedIds=['bb','aa','99'];
+    var selectedIds=ScopedModelHelper.getModel<FilterBarModel>(context).selectedList.toList();//toList的原因是Set类型转成List类型
+    _onChange(String val){
+      ScopedModelHelper.getModel<FilterBarModel>(context).selectedListToggleItem(val);
+    }
     return Drawer(
       child: SafeArea(//解决ListView在某些手机布局错乱的问题
         child: ListView(
@@ -15,16 +27,19 @@ class FilterDrawer extends StatelessWidget {
             FilterDrawerItem(
               list:roomTypeList,
               selectedIds: selectedIds,
+              onChage: _onChange,
             ),//封装成组件
             CommonTitle("朝向"),
               FilterDrawerItem(
               list:orientedList,
               selectedIds: selectedIds,
+              onChage: _onChange,
             ),
             CommonTitle("楼层"),
               FilterDrawerItem(
               list:floorList,
               selectedIds: selectedIds,
+              onChage: _onChange,
             ),
           ]
         ),
