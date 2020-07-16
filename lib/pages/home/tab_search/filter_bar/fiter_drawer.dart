@@ -16,6 +16,7 @@ class FilterDrawer extends StatelessWidget {
 
     // var selectedIds=['bb','aa','99'];
     var selectedIds=ScopedModelHelper.getModel<FilterBarModel>(context).selectedList.toList();//toList的原因是Set类型转成List类型
+  print(selectedIds);
     _onChange(String val){
       ScopedModelHelper.getModel<FilterBarModel>(context).selectedListToggleItem(val);
     }

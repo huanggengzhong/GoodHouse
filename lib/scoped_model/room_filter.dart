@@ -1,6 +1,8 @@
 import 'package:goodhouse/pages/home/tab_search/filter_bar/data.dart';
 import 'package:scoped_model/scoped_model.dart';
 
+
+
 class FilterBarModel extends Model {
   List<GeneralType> _roomTypeList = [];
   List<GeneralType> _orientedList = [];
@@ -16,7 +18,7 @@ class FilterBarModel extends Model {
     return result;
   }
 
-  get selectedList => null;
+  // get selectedList => null;
 
   // 写数据方法
   set dataList(Map<String, List<GeneralType>> data) {
@@ -28,7 +30,7 @@ class FilterBarModel extends Model {
 
 // _selectedList 对应的函数方法
 // 读取数据
-  Set<String> get getSelectedList {
+  Set<String> get selectedList {
     return _selectedList;
   }
 
