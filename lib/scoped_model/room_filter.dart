@@ -9,7 +9,7 @@ class FilterBarModel extends Model {
   List<GeneralType> _floorList = [];
 
   Set<String> _selectedList = Set<String>();
-  // 读数据
+  // 读数据方法
   Map<String, List<GeneralType>> get dataList {
     var result = Map<String, List<GeneralType>>();
     result['roomTypeList'] = _roomTypeList;
@@ -17,8 +17,6 @@ class FilterBarModel extends Model {
     result['floorList'] = _floorList;
     return result;
   }
-
-  // get selectedList => null;
 
   // 写数据方法
   set dataList(Map<String, List<GeneralType>> data) {

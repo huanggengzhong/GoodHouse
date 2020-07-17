@@ -1645,7 +1645,7 @@ class _RoomDetailPageState extends State<RoomDetailPage> {
 
 ```
 
-### 搜索页展示区域filter_bar
+### 搜索页展示区域filter_bar(细节在源码里)
 ```js
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/tab_search/filter_bar/data.dart';
