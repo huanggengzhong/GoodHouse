@@ -12,6 +12,7 @@ class TabIndex extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
+        automaticallyImplyLeading: false,
         title:SearchBar(showLocation: true,showMap: true,onSearch: (){
           Navigator.of(context).pushNamed('search');//跳转到搜索页面
           print("跳转到搜索页面测试");

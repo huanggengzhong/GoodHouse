@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/index.dart';
+import 'package:goodhouse/pages/loading.dart';
 import 'package:goodhouse/pages/login/login.dart';
 import 'package:goodhouse/pages/register.dart';
 import 'package:goodhouse/pages/room_add/index.dart';
@@ -19,6 +20,8 @@ class Routes {
   static String setting='/setting';
   static String roomManager="/roomManager";
   static String roomAdd='/roomAdd';
+  static String loading='/loading';
+  
 
   static Handler _homeHandler = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
   return HomePage();
@@ -41,6 +44,9 @@ class Routes {
   static Handler _roomAdd = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
   return RoomAddPage();
   });
+  static Handler _loadingHandler = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+  return LoadingPage();
+  });
   // static Handler _notFoundHandler=Handler(handlerFunc: (BuildContext context, Map<String,dynamic> params) {
   //   return NotFoundPage();
   // });//目前有问题,报The method 'inheritFromWidgetOfExactType' was called on null错误
@@ -61,6 +67,7 @@ class Routes {
   router.define(setting,handler:_setting);
   router.define(roomManager,handler:_roomManager);
   router.define(roomAdd,handler:_roomAdd);
+  router.define(loading,handler:_loadingHandler);
   // router.notFoundHandler=_notFoundHandler;//目前有问题,报The method 'inheritFromWidgetOfExactType' was called on null错误
   }
 }

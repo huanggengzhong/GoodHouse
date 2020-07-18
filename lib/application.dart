@@ -21,9 +21,10 @@ class Application extends StatelessWidget {
         theme: new ThemeData(
           primarySwatch: Colors.green, //这里设置主题颜色
         ),
-        home: HomePage(),
+        // home: HomePage(),
         // home:LoginPage(),
         onGenerateRoute: router.generator,
+        initialRoute: Routes.loading,
       ),
     );
     // MaterialApp(

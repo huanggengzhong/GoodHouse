@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+const arr1 = [
+{age:20,id:11},
+{age:21,id:2},
+{age:26,id:32},
+{age:28,id:345}
+];
+
+const arr2 = [
+{stu:222,list:[{name:'小明',age:20,id:11}]},
+{stu:232324,list:[{name:'小花',age:21,level:2,id:2},{name:'小小',age:21,level:2,id:2}]},
+{stu:443,list:[{name:'小太阳',age:26,level:2,id:32}]},
+{stu:9988,list:[{name:'小月亮',age:28,level:3,id:345}]}
+];
+
+let newArr=[]
+arr1.forEach(item1=>{
+  arr2.forEach(item2=>{
+    item2.list.forEach(item3=>{
+      if(item3.id===item1.id){
+        newArr.push({
+      id:item1.id,
+      age:item1.age,
+      name:item3.name
+    })
+      }
+    })
+  
+  })
+})
+
+console.log(newArr);
+  
+</script>
