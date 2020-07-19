@@ -24,6 +24,7 @@ class ItemWidget extends StatelessWidget {
           Expanded(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                 Text(data.title,
                     style: TextStyle(

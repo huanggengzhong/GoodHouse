@@ -1933,3 +1933,29 @@ class _LoadingPageState extends State<LoadingPage> {
 }
 ```
 
+### 安卓打包
+步骤：
+
+1. 修改应用名称
+   /项目目录/android/app/src/main/AndroidManifest.xml    文件 application 标签 android:label 属性
+2. 修改图标及背景图(背景图解决空白问题,我是直接替换res文件夹的)
+   文件地址：/resource/chapter6/01静态资源/package/android/res
+   目标地址：/项目目录/android/app/src/main/res
+3. 修改构建配置(构建时不需要检验)
+   在 android/app/build.gradle 文件中 android.lintOption 添加属性 checkReleaseBuilds false
+4. 构建
+   flutter build apk 
+
+打包成功后apk文件的位置:build\app\outputs\apk\release\app-release.apk (18.4MB)
+安装成功后,打开有闪退问题,在 android/app/build.gradle 文件,最后解决办法:
+```js
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+            //关键代码:关闭混淆,解决闪退问题
+            minifyEnabled false
+            shrinkResources false
+            // 关键代码:解决闪退问题
+        }
+    }
+```

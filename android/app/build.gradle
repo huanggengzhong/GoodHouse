@@ -35,6 +35,8 @@ android {
 
     lintOptions {
         disable 'InvalidPackage'
+        //构建时不需要检验
+        checkReleaseBuilds false
     }
 
     defaultConfig {
@@ -52,6 +54,9 @@ android {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
+            //关闭混淆,解决闪退问题
+            minifyEnabled false
+            shrinkResources false
         }
     }
 }

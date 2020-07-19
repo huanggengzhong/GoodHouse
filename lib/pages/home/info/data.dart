@@ -12,7 +12,7 @@ class InfoItem {
 
 const List<InfoItem> infoData = [
   const InfoItem(
-      title: '置业选择 | 安贞西里 三室一厅 河间的古雅别院',
+      title: '置业选择 | 三室一厅 河间的古雅别院',
       imageUrl:
           'https://wx2.sinaimg.cn/mw1024/005SQLxwly1g6f89l4obbj305v04fjsw.jpg',
       source: "新华网",
