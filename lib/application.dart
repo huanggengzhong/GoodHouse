@@ -17,6 +17,7 @@ class Application extends StatelessWidget {
     return ScopedModel<FilterBarModel>(//使用状态管理数据
       model: FilterBarModel(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         // title: 'goodhouse',//这是标题,目前没什么用
         theme: new ThemeData(
           primarySwatch: Colors.green, //这里设置主题颜色
